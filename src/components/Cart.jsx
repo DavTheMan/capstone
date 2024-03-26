@@ -3,7 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 
 export const url = `https://fakestoreapi.com`;
 
-export function Cart({ token, setToken, username, setUsername }) {
+export default function Cart({ token, setToken, username, setUsername }) {
   const nav = useNavigate();
   const [successMessage, setSuccessMessage] = useState(null);
   const [successData, setSuccessData] = useState([]);
@@ -127,41 +127,13 @@ export function Cart({ token, setToken, username, setUsername }) {
 
   if (!username) {
     return (
-      <div
-        style={{
-          textAlign: "center",
-          marginTop: "50px",
-          background: "white",
-        }}
-      >
+      <div>
         <p>You are not logged in.</p>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            marginTop: "20px",
-          }}
-        >
-          <Link
-            to="/login"
-            style={{
-              margin: "0 10px",
-              textDecoration: "none",
-              color: "#3498db",
-              fontWeight: "bold",
-            }}
-          >
+        <div>
+          <Link to="/login">
             Login
           </Link>
-          <Link
-            to="/register"
-            style={{
-              margin: "0 10px",
-              textDecoration: "none",
-              color: "#2ecc71",
-              fontWeight: "bold",
-            }}
-          >
+          <Link to="/register">
             Sign Up
           </Link>
         </div>
@@ -170,20 +142,9 @@ export function Cart({ token, setToken, username, setUsername }) {
   }
 
   return (
-    <div
-      id="account"
-      style={{
-        textAlign: "center",
-        padding: "20px",
-        backgroundColor: "#f3f3f3",
-        borderRadius: "10px",
-        maxWidth: "500px",
-        margin: "auto",
-        marginTop: "50px",
-      }}
-    >
-      <h2 style={{ color: "#333" }}>User Cart</h2>
-      {successMessage && <p style={{ color: "green" }}>{successMessage}</p>}
+    <div id="account">
+      <h2>User Cart</h2>
+      {successMessage && <p>{successMessage}</p>}
       {error && <p style={{ color: "red" }}>{error}</p>}
       {cart &&
         cart.map((item, idx) => (
@@ -196,71 +157,43 @@ export function Cart({ token, setToken, username, setUsername }) {
             <button onClick={() => handleDelete(idx)}>Delete</button>
           </div>
         ))}
-      <button
-        style={{
-          margin: "10px",
-          padding: "10px",
-          backgroundColor: "#3498db",
-          color: "white",
-          border: "none",
-          borderRadius: "5px",
-        }}
-        onClick={logOut}
-      >
+      <button onClick={logOut}>
         Log Out
       </button>
-      <button
-        style={{
-          margin: "10px",
-          padding: "10px",
-          backgroundColor: "#2ecc71",
-          color: "white",
-          border: "none",
-          borderRadius: "5px",
-        }}
-        onClick={() => setShowCheckoutForm(true)}
-      >
+      <button onClick={() => setShowCheckoutForm(true)}>
         Checkout Items
       </button>
       {showCheckoutForm && (
-        <div
-          style={{
-            marginTop: "20px",
-            backgroundColor: "#fff",
-            padding: "20px",
-            borderRadius: "10px",
-          }}
-        >
-          <h3 style={{ color: "#333" }}>Checkout Form</h3>
+        <div>
+          <h3 >Checkout Form</h3>
           <form>
-            <label style={{ display: "block", margin: "10px" }}>
+            <label >
               Street:
               <input
                 type="text"
                 name="street"
                 value={formData.street}
                 onChange={handleInputChange}
-                style={{ marginLeft: "10px", padding: "5px" }}
+                
               />
             </label>
-            <label style={{ display: "block", margin: "10px" }}>
+            <label >
               City:
               <input
                 type="text"
                 name="city"
                 value={formData.city}
                 onChange={handleInputChange}
-                style={{ marginLeft: "10px", padding: "5px" }}
               />
             </label>
-            <label style={{ display: "block", margin: "10px" }}>
+            <label >
               Zipcode:
               <input
                 type="text"
                 name="zipcode"
                 value={formData.zipcode}
                 onChange={handleInputChange}
-                style={{ marginLeft: "10px", padding: "5px" }}
+                
               />
             </label>
             <label style={{ display: "block", margin: "10px" }}>
@@ -270,21 +203,10 @@ export function Cart({ token, setToken, username, setUsername }) {
                 name="creditCard"
                 value={formData.creditCard}
                 onChange={handleInputChange}
-                style={{ marginLeft: "10px", padding: "5px" }}
+                
               />
             </label>
-            <button
-              type="button"
-              style={{
-                margin: "10px",
-                padding: "10px",
-                backgroundColor: "#e74c3c",
-                color: "white",
-                border: "none",
-                borderRadius: "5px",
-              }}
-              onClick={handleCheckout}
-            >
+            <button type="button" onClick={handleCheckout}>
               Confirm Checkout
             </button>
           </form>

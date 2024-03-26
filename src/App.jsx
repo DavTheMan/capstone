@@ -8,6 +8,7 @@ import Category from './components/Category';
 import Product from './components/Product';
 
 
+
 //import './App.css'
 
 
@@ -44,3 +45,5 @@ const App = () => {
 }
 
 export default App
+//<Route path="/Cart" element={<Cart/>} />
+// <Link to={`/Cart`}>Cart</Link>
