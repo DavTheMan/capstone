@@ -20,9 +20,9 @@ const App = () => {
       <div id="container">
       <h1>Stff Wrld</h1>
       <div id="navbar">
-      <Link to={`/`}>Home</Link>
-      <Link to={`/Category`}>Store2</Link>
-      <Link to={`/Login`}>Login</Link>
+      <Link to={`/`}>Home </Link>
+      <Link to={`/Category`}>Store2 </Link>
+      <Link to={`/Login`}>Login </Link>
       <Link to={`/Cart`}>Cart</Link>
       
       
