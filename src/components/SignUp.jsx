@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 //import Login from "./login";
-export default function SignUp({token, setToken}) {
+export default function SignUp() {
     const [regData, setRegData] = useState({email:'',
     username:'',
     password:'',
@@ -14,10 +14,7 @@ export default function SignUp({token, setToken}) {
         street:'',
         number:'',
         zipcode:'',
-        geolocation:{
-            lat:'',
-            long:''
-        }
+        
     },
     phone:''
     })
@@ -26,7 +23,7 @@ export default function SignUp({token, setToken}) {
         
         if (name.includes('.')) {
             const [parent, child] = name.split('.');
-            setRegisterData(prevState => ({
+            setRegData(prevState => ({
                 ...prevState,
                 [parent]: {
                     ...prevState[parent],
@@ -34,7 +31,7 @@ export default function SignUp({token, setToken}) {
                 }
             }));
         } else {
-            setRegisterData(prevState => ({
+            setRegData(prevState => ({
                 ...prevState,
                 [name]: value
             }));
@@ -99,50 +96,6 @@ export default function SignUp({token, setToken}) {
                 name='password'
                 placeholder='Password'
                 value={regData.password}
-                onChange={handleInput}
-            />
-            <h3>Address</h3>
-            <input
-                type='text'
-                name='address.city'
-                placeholder='City'
-                value={regData.address.city}
-                onChange={handleInput}
-            />
-             <input
-                type='text'
-                name='address.street'
-                placeholder='Street'
-                value={regData.address.street}
-                onChange={handleInput}
-            />
-             <input
-                type='text'
-                name='address.number'
-                placeholder='Number'
-                value={regData.address.number}
-                onChange={handleInput}
-            />
-             <input
-                type='text'
-                name='address.zipcode'
-                placeholder='Zipcode'
-                value={regData.address.zipcode}
-                onChange={handleInput}
-            />
-            <h4>Geolocation</h4>
-             <input
-                type='text'
-                name='address.geolocation.lat'
-                placeholder='Latitude'
-                value={regData.address.geolocation.lat}
-                onChange={handleInput}
-            />
-              <input
-                type='text'
-                name='address.geolocation.long'
-                placeholder='Longitude'
-                value={regData.address.geolocation.long}
                 onChange={handleInput}
             />
             <h3>Phone</h3>

@@ -70,3 +70,12 @@ button:focus-visible {
   display: flex;
   flex-direction: column;
 }
+.register-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  color: black;
+  background-image: linear-gradient(to bottom right, white, grey);
+}
